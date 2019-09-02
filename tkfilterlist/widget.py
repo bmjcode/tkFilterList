@@ -26,15 +26,14 @@ class FilterList(Frame):
 
       display_rule (function)
         Function returning the display text for a given item.
+        See the module documentation for arguments and return types.
 
       filter_rule (function)
         Function returning whether the entered text matches a given item.
+        See the module documentation for arguments and return types.
 
       source (list or other iterable)
         Values to display in the Listbox widget.
-
-    See the tkfilterlist module documentation for arguments and return
-    values for the display_rule and filter_rule functions.
     """
 
     def __init__(self, master, **kw):
