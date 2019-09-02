@@ -8,9 +8,8 @@ tkFilterList consists of a single module, `tkfilterlist` (note the module name i
 A brief example program:
 
 ```python
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
-# This assumes Python 3
 from tkinter import *
 from tkinter.messagebox import showinfo
 from tkfilterlist import FilterList
@@ -58,9 +57,13 @@ For detailed documentation, try `python -m pydoc tkfilterlist`.
 
 ## Customization
 
-You can customize the item display and filtering behavior by setting its `display_rule` and `filter_rule` options, respectively, to your own custom functions:
+You can customize the item display and filtering behavior by setting its `display_rule` and `filter_rule` options, respectively, to your own custom functions. This allows tkFilterList to process lists containing complex datatypes, including nested lists, tuples, and even entire classes. The functions are defined as follows:
 
-* `display_rule(item)`: Returns the display text for the specified `item`.
-* `filter_rule(item, text)`: Returns `True` if the `text` argument matches the specified `item`, `False` otherwise.
+Function | Description
+-------- | -----------
+`display_rule(item)` | Returns the display text for the specified `item`.
+`filter_rule(item, text)` | Returns `True` if the `text` argument matches the specified `item`, `False` otherwise.
 
-This allows tkFilterList to process lists containing complex datatypes, including other lists, tuples, and even entire classes.
+The default display rule is available as `FilterList.default_display_rule`. It returns the string value of `item`, matching the behavior of a standard Listbox widget.
+
+The default filter rule is available as `FilterList.default_filter_rule`. It returns `True` if an `item` starts with the specified `text` using a case-insensitive match.
