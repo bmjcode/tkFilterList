@@ -97,11 +97,11 @@ class FilterList(Frame):
     def __setitem__(self, key, value):
         """Configure resources of a widget."""
 
-        if key in self._custom_keys:
+        if key in self._CUSTOM_KEYS:
             # Process custom keys
             self._custom_configure(key, value)
 
-        elif key in self._listbox_keys:
+        elif key in self._LISTBOX_KEYS:
             # Forward these to the Listbox widget
             self._listbox.configure(**{key: value})
 
@@ -125,10 +125,10 @@ class FilterList(Frame):
     def cget(self, key):
         """Return the resource value for a KEY given as string."""
 
-        if key in self._custom_keys:
+        if key in self._CUSTOM_KEYS:
             return self._custom_cget(key)
 
-        elif key in self._listbox_keys:
+        elif key in self._LISTBOX_KEYS:
             return self._listbox.cget(key)
 
         else:
@@ -141,9 +141,9 @@ class FilterList(Frame):
         """Configure resources of a widget."""
 
         # Process custom keys first
-        # Because self._custom_keys is already sorted, iterating through
+        # Because self._CUSTOM_KEYS is already sorted, iterating through
         # it ensures our custom keys are processed in the correct order.
-        for key in self._custom_keys:
+        for key in self._CUSTOM_KEYS:
             if key in kw:
                 self._custom_configure(key, kw[key])
                 del kw[key]
@@ -164,7 +164,7 @@ class FilterList(Frame):
     def keys(self):
         """Return a list of all resource names of this widget."""
 
-        return list(Frame.keys(self)) + list(self._custom_keys)
+        return list(Frame.keys(self)) + list(self._CUSTOM_KEYS)
 
     def selection(self):
         """Return the selected item.
@@ -326,7 +326,7 @@ class FilterList(Frame):
     # Custom keys for the ScrolledFrame widget
     # Note: Keep "source" last so it's processed using any rules set during
     # the same configure() call.
-    _custom_keys = "display_rule", "filter_rule", "source"
+    _CUSTOM_KEYS = "display_rule", "filter_rule", "source"
 
     # Keys for configure() to forward to the Listbox widget
-    _listbox_keys = "width", "height"
+    _LISTBOX_KEYS = "width", "height"
