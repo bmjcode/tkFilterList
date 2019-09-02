@@ -46,12 +46,9 @@ class FilterList(Frame):
         # Values in self._source matching self._filter_rule
         self._filtered_values = []
 
-        # Default item display rule
-        self._display_rule = lambda item: str(item)
-
-        # Default item filter rule
-        self._filter_rule = (lambda item, text:
-                             item.lower().startswith(text.lower()))
+        # Default item display and filter rules
+        self._display_rule = self.default_display_rule
+        self._filter_rule = self.default_filter_rule
 
         # Frame for the Listbox widget
         self._list_frame = Frame(self,
@@ -320,6 +317,18 @@ class FilterList(Frame):
             # Bind all other events to the Entry widget
             # (this includes all key press/release events)
             return self._text_entry
+
+    # ------------------------------------------------------------------------
+
+    @staticmethod
+    def default_display_rule(item):
+        """Return the string value of item."""
+        return str(item)
+
+    @staticmethod
+    def default_filter_rule(item, text):
+        """Return True if item starts with text (case-insensitive)."""
+        return item.lower().startswith(text.lower())
 
     # ------------------------------------------------------------------------
 
