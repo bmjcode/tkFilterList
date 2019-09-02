@@ -3,7 +3,7 @@
 from setuptools import setup, find_packages
 
 NAME = "tkFilterList"
-VERSION = "0.1.0"
+VERSION = "0.1.1"
 AUTHOR = "Benjamin Johnson"
 AUTHOR_EMAIL = "bmjcode@gmail.com"
 DESCRIPTION = "Self-filtering Listbox with text entry for Tkinter"
