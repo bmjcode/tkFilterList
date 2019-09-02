@@ -53,12 +53,6 @@ class FilterList(Frame):
         self._filter_rule = (lambda item, text:
                              item.lower().startswith(text.lower()))
 
-        # Default dimensions of the Listbox widget
-        if not "width" in kw:
-            kw["width"] = 40
-        if not "height" in kw:
-            kw["height"] = 10
-
         # Frame for the Listbox widget
         self._list_frame = Frame(self,
                                  borderwidth=1,
