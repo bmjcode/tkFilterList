@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 """A self-filtering Listbox with text entry for Tkinter.
 
 tkFilterList is a combination of the Tkinter Listbox and Entry widgets
